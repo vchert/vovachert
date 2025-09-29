@@ -1,9 +1,80 @@
-# Python program to check if the input number is odd or even.
-# A number is even if division by 2 gives a remainder of 0.
-# If the remainder is 1, it is an odd number.
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Середнє число</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f3f3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    input {
+      width: 250px;
+      padding: 10px;
+      margin: 5px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+      text-align: center;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      background: #2196f3;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    button:hover {
+      background: #1976d2;
+    }
+    #output {
+      margin-top: 15px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
 
-num = int(input("Enter a number: "))
-if (num % 2) == 0:
-   print("{0} is Even".format(num))
-else:
-   print("{0} is Odd".format(num))
+  <div class="container">
+    <h2>Обчислення середнього</h2>
+    <input type="text" id="numbers" placeholder="Введіть числа через кому (наприклад: 10, 20, 30)">
+    <br>
+    <button onclick="calculateAverage()">Розрахувати</button>
+    <div id="output"></div>
+  </div>
+
+  <script>
+    function calculateAverage() {
+      const input = document.getElementById("numbers").value;
+      const numbers = input.split(",").map(num => parseFloat(num.trim())).filter(num => !isNaN(num));
+
+      if (numbers.length === 0) {
+        document.getElementById("output").innerText = "Введіть хоча б одне число!";
+        return;
+      }
+
+      const sum = numbers.reduce((acc, curr) => acc + curr, 0);
+      const average = sum / numbers.length;
+
+      document.getElementById("output").innerText = "Середнє значення: " + average;
+    }
+  </script>
+
+</body>
+</html>
